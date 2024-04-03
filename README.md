@@ -18,7 +18,7 @@ Esta máquina virtual te permite hacer estas operaciones:
 <h2>¿Cómo se ha desarrollado este proyecto?</h2>
 Este proyecto ha sido desarrollado en el 3º trimestre la asignatura de <i>Programación</i> del curso de 1º CFGS DAM. Se ha utilizado para desarrollarlo el IDE Eclipse ya que se ha programado en Java
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5e61QZcOk2_7CaZAOTtL0KkZTaGLRgdk8gAjymLd_&s" alt="IDE Eclipse">
-<img src="https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png" alt="Logo de Java">
+<img src="https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png" alt="Logo de Java" width="200px">
 <h2>¿Cómo funciona esta Máquina Virtual?</h2>
 <hr>
 
