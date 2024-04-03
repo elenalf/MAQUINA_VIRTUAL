@@ -1,4 +1,4 @@
-# Máquina Virtual 💻
+<h1 align="center"> Máquina Virtual 💻 </h1>
 > Creado por Elena López Félix 1º CFGS DAM 📝
 ## ¿De qué trata este proyecto? 🤔
  Este proyecto trata sobre la creación de una máquina virtual simple en la que el usuario podrá indicar por consola las instrucciones que se desean llevar a cabo.
