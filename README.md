@@ -14,7 +14,7 @@ Esta máquina virtual te permite hacer estas operaciones:
 <li>OUT = mostrar por consola cual es el elemento de la cima de la pila 🗻</li>
 <li>HALT = detiene el programa 🛑</li>
 <h3>Ejemplo de funcionamiento</h3>
-<img src="https://drive.google.com/file/d/1ye1EePGJ32n2fTTwHhcRjw45n4Th7aog/view?usp=sharing)" alt="Funcionamiento del programa">
+![Captura de pantalla 2024-04-02 163817](https://github.com/elenalf11/MAQUINA_VIRTUAL/assets/144839228/9241fc42-eba3-4329-8592-72ab554814a1) 
 <h2>¿Cómo se ha desarrollado este proyecto?</h2>
 Este proyecto ha sido desarrollado en el 3º trimestre la asignatura de <i>Programación</i> del curso de 1º CFGS DAM. Se ha utilizado para desarrollarlo el IDE Eclipse ya que se ha programado en Java
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5e61QZcOk2_7CaZAOTtL0KkZTaGLRgdk8gAjymLd_&s" alt="IDE Eclipse">
@@ -23,3 +23,4 @@ Este proyecto ha sido desarrollado en el 3º trimestre la asignatura de <i>Progr
 <hr>
 
  
+
