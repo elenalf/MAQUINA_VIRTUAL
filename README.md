@@ -4,7 +4,7 @@
 </div>
 <h2>¿De qué trata este proyecto? 🤔</h2>
  Este proyecto trata sobre la creación de una máquina virtual simple en la que el usuario podrá indicar por consola las instrucciones que se desean llevar a cabo. 
- <img src="https://www.docpath.com/wp-content/uploads/features-and-advantages-of-virtual-machine-systems.png" alt="Idea general sobre máquinas virtuales">
+ <img src="https://www.docpath.com/wp-content/uploads/features-and-advantages-of-virtual-machine-systems.png" alt="Idea general sobre máquinas virtuales" with="100px">
 <h2>¿Qué clase de operaciones puede desarrollar? </h2>
 Esta máquina virtual te permite hacer estas operaciones:
 <li>PUSH = almacenar un número en la pila 📂</li>
