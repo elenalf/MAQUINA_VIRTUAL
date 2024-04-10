@@ -10,7 +10,7 @@ public class Memory {
 	/**
 	 * Atributos
 	 */
-	private int[] memory;
+	private Integer[] memory;
 	private final int MAX_MEMORY;
 	private int size;
 
@@ -19,7 +19,7 @@ public class Memory {
 	 */
 	public Memory() {
 		this.MAX_MEMORY = 10;
-		this.memory = new int[this.MAX_MEMORY];
+		this.memory = new Integer[this.MAX_MEMORY];
 		this.size = 0;
 	}
 
