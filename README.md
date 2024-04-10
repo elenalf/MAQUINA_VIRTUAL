@@ -30,8 +30,10 @@ Este proyecto ha sido desarrollado en el 3º trimestre la asignatura de <i>Progr
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5e61QZcOk2_7CaZAOTtL0KkZTaGLRgdk8gAjymLd_&s" alt="IDE Eclipse">
 <img src="https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png" alt="Logo de Java" width="200px">
 <h2>¿Cómo está estructurado el proyecto?</h2>
+El proyecto está compuesto por 10 clases y 2 tipos enumerados.
 <img src="" alt="Estructura del proyecto">
 <h2>¿Cómo funciona esta Máquina Virtual?</h2>
+La aplicación será capaz de ejecutar una serie de comandos introducidos por el usuario para crear, modificar y ejecutar programas, donde un programa es una lista de instancias de las instrucciones que se presentan en la siguiente sección
 <img src="" alt="Ejemplo de funcionamiento">
 
  
