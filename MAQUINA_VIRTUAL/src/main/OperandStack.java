@@ -9,7 +9,7 @@ public class OperandStack {
 	/**
 	 * Atributos
 	 */
-	private int MAX_STACK;
+	private final int MAX_STACK;
 	private int[] stack;
 	private int num_elements;
 
@@ -39,6 +39,13 @@ public class OperandStack {
 	 * @return Retorna true si el array esta vacio, sino retorna false
 	 */
 	public boolean isEmpty() {
+		int i = 0; 
+		while(i < this.num_elements) {
+			if() {
+				
+			}
+			i++;
+		}
 
 	}
 
@@ -48,7 +55,9 @@ public class OperandStack {
 	 * Complejidad =
 	 */
 	public void push() {
+		for (int i = 0; i < this.stack.length; i++) {
 
+		}
 	}
 
 	/**
@@ -67,7 +76,7 @@ public class OperandStack {
 	 * Metodo que nos indica cual es el ultimo elemento del array
 	 */
 	public void getCima() {
-
+		System.out.println("El elemento que se encuentra en la cima de la pila es " + this.stack[this.num_elements]);
 	}
 
 }

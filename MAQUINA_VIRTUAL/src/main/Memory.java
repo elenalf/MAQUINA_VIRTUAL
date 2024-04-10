@@ -11,7 +11,7 @@ public class Memory {
 	 * Atributos
 	 */
 	private int[] memory;
-	private int MAX_MEMORY;
+	private final int MAX_MEMORY;
 	private int size;
 
 	/**
@@ -56,7 +56,7 @@ public class Memory {
 	/**
 	 * Metodo que va aumentando el tamaño de nuestro array
 	 */
-	public void resize() {
+	public void resize(int pos) {
 
 	}
 

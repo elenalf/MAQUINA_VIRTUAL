@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Scanner;
+
 /**
  * Clase Engine
  * 
@@ -7,16 +9,17 @@ package main;
  */
 
 public class Engine {
+	public static final String ANSI_RED = "\u001B[31m";
 	/**
 	 * Metodo que muestra el menu de funcionamiento del programa
 	 */
-	public void help() {
-		System.out.println("HELP - muestra de nuevo este menú");
-		System.out.println("QUIT - cierra la aplicación");
-		System.out.println("RUN - ejecuta el programa");
-		System.out.println("NEWINST BYTECODE - introduce una nueva instrucción al programa");
-		System.out.println("RESET - vacía el programa actual");
-		System.out.println("REPLACE N - reemplaza la instrucción N por una nueva");
+	public void menu() {
+		System.out.println("   HELP - Muestra esta ayuda");
+		System.out.println("   QUIT - Cierra la aplicación");
+		System.out.println("   RUN - Ejecuta el programa");
+		System.out.println("   NEWINST BYTECODE - Introduce una nueva instrucción al programa");
+		System.out.println("   RESET - Vacía el programa actual");
+		System.out.println("   REPLACE N - Reemplaza la instrucción N por la solicitada al usuario");
 	}
 
 	/**
@@ -52,6 +55,20 @@ public class Engine {
 	 * Metodo que reemplaza una instruccion por otra que el usuario introduzca
 	 */
 	public void replace() {
+
+	}
+
+	/**
+	 * Metodo que maneja todo el flujo del programa
+	 */
+	public void start() {
+		Scanner sc = new Scanner(System.in);
+		menu();
+		System.out.println();
+		System.out.println("¿Qué instrucción desea ejecutar? Por favor respete la sintaxis: ");
+		String opcion = sc.nextLine();
+		System.out.println(ANSI_RED + "Comienza la ejecucción de " + opcion.toUpperCase());
+		System.out.println();
 
 	}
 }
