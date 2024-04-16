@@ -11,7 +11,7 @@ public class Command {
 	/**
 	 * Atributos
 	 */
-	private ENUM_COMANDO command;
+	private ENUM_COMMAND command;
 	private ByteCode instruction; // es el valor que se toma cuando se hace referencia al comando NEWINST
 	private int replace; // hace referencia al comando REPLACE
 

@@ -9,17 +9,20 @@ import java.util.Scanner;
  */
 
 public class Engine {
-	
+	// pluggling para cambiar el color del texto
+	public static final String ANSI_RED = "\u001B[31m";
+
 	/**
 	 * Atributos
 	 */
-	
-	private ByteCodeProgram program;
-	private boolean end;
-	//pluggling para cambiar el color del texto
-	public static final String ANSI_RED = "\u001B[31m";
-	
-	
+
+	private ByteCodeProgram program; // representa el programa actual
+	private boolean end; // acabar con la ejecución
+
+	/**
+	 * Constructora
+	 */
+
 	/**
 	 * Metodo que muestra el menu de funcionamiento del programa
 	 */
