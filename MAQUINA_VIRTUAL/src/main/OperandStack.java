@@ -29,12 +29,12 @@ public class OperandStack {
 	 * @return Retorna el array convertido en un String
 	 */
 	public String toString() {
-		String chain = "Pila: ";
+		String chain = "Pila:";
 		if (this.isEmpty()) {
 			chain += " <vacía>";
 		} else {
-			for (int i = 0; i < this.stack.length; i++) {
-				String numero = this.stack[i] + "   ";
+			for (int i = 0; i < this.num_elements; i++) {
+				String numero = " " + this.stack[i] + "  ";
 				chain += numero;
 			}
 		}
@@ -61,8 +61,8 @@ public class OperandStack {
 	 *         false
 	 */
 	public boolean push(int element) {
-		if (this.stack.length < this.MAX_STACK) {
-			this.stack[this.num_elements] = element;
+		if (this.num_elements < this.MAX_STACK) {
+			this.stack[this.num_elements] += element;
 			this.num_elements++;
 			return true;
 		} else {
@@ -84,9 +84,11 @@ public class OperandStack {
 		if (this.isEmpty()) {
 			return -1;
 		} else {
-			int eliminar;
-			eliminar = this.stack[this.num_elements - 1];
-			return eliminar;
+			int ultimo = this.stack[this.num_elements - 1];
+			this.stack[this.num_elements - 1] = 0;
+			this.num_elements--;
+			
+			return ultimo;
 
 		}
 
