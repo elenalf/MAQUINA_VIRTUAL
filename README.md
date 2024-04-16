@@ -7,16 +7,16 @@
  <img src="https://www.docpath.com/wp-content/uploads/features-and-advantages-of-virtual-machine-systems.png" alt="Idea general sobre máquinas virtuales" height="450px">
 <h2>¿Qué clase de operaciones puede desarrollar? </h2>
 Esta máquina virtual te permite hacer estas operaciones:
-<li>PUSH = almacenar un número en la pila 📂</li>
+<li>PUSH = almacenar un número en la pila de operandos 📂</li>
 <h3>Ejemplo de funcionamiento</h3>
 <img src="" alt="Ejemplo de funcionamiento">
-<li>ADD, SUB, MUL, DIV = operaciones matemáticas (sumas, restas, multiplicaciones y divisiones) ➕➖✖️➗</li>
+<li>ADD, SUB, MUL, DIV = operaciones aritméticas entre la subcima y la cima de la pila de operandos (sumas, restas, multiplicaciones y divisiones) ➕➖✖️➗</li>
 <h3>Ejemplo de funcionamiento</h3>
 <img src="" alt="Ejemplo de funcionamiento">
-<li>LOAD = carga un número que este almacenado en la memoria de nuestro programa</li>
+<li>LOAD = lee de la memoria el valor que desee el usuario y lo almacena en la pila de operandos 📂</li>
 <h3>Ejemplo de funcionamiento</h3>
 <img src="" alt="Ejemplo de funcionamiento">
-<li>STORE = almacenar en la memoria de nuestro programa el número que este en la cima de la pila</li>
+<li>STORE = escribe en la posicion de la memoria que desee el usuario el contenido de la cima de la pila de operandos y la elimina de ésta ✍️</li>
 <h3>Ejemplo de funcionamiento</h3>
 <img src="" alt="Ejemplo de funcionamiento">
 <li>OUT = mostrar por consola cual es el elemento de la cima de la pila 🗻</li>
@@ -30,8 +30,10 @@ Este proyecto ha sido desarrollado en el 3º trimestre la asignatura de <i>Progr
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5e61QZcOk2_7CaZAOTtL0KkZTaGLRgdk8gAjymLd_&s" alt="IDE Eclipse">
 <img src="https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png" alt="Logo de Java" width="200px">
 <h2>¿Cómo está estructurado el proyecto?</h2>
+El proyecto está compuesto por 10 clases y 2 tipos enumerados.
 <img src="" alt="Estructura del proyecto">
 <h2>¿Cómo funciona esta Máquina Virtual?</h2>
+La aplicación será capaz de ejecutar una serie de comandos introducidos por el usuario para crear, modificar y ejecutar programas, donde un programa es una lista de instancias de las instrucciones que se presentan en la siguiente sección
 <img src="" alt="Ejemplo de funcionamiento">
 
  
