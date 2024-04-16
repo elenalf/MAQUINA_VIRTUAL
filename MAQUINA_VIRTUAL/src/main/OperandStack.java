@@ -29,9 +29,17 @@ public class OperandStack {
 	 * @return Retorna el array convertido en un String
 	 */
 	public String toString() {
-		// retorna la cadena de String si tiene algo
-		return chain;
+		String chain = "Pila: ";
+		if (this.isEmpty()) {
+			chain += " <vacía>";
+		} else {
+			for (int i = 0; i < this.stack.length; i++) {
+				String numero = this.stack[i] + "   ";
+				chain += numero;
+			}
+		}
 
+		return chain;
 	}
 
 	/**
@@ -73,13 +81,13 @@ public class OperandStack {
 	 *         encuentre en la ultima posicion
 	 */
 	public int pop() {
-		if(this.isEmpty()) {
+		if (this.isEmpty()) {
 			return -1;
-		}else {
+		} else {
 			int eliminar;
 			eliminar = this.stack[this.num_elements - 1];
 			return eliminar;
-			
+
 		}
 
 	}
@@ -91,9 +99,9 @@ public class OperandStack {
 	 *         elemento
 	 */
 	public int getCima() {
-		if(this.isEmpty()) {
+		if (this.isEmpty()) {
 			return -1;
-		}else {
+		} else {
 			return this.stack[this.num_elements - 1];
 		}
 	}
