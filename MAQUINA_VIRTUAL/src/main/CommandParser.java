@@ -5,7 +5,8 @@ package main;
  * 
  * @author elena
  */
-
+//Es igual que ByteCodeParser
+//Hay que hacer una llamada a la clase ByteCodeParser
 public class CommandParser {
 
 	/**
@@ -15,6 +16,10 @@ public class CommandParser {
 	 * @return si line no corresponde con la sintaxis de algun comando retorna null
 	 */
 	public static Command parse(String line) {
+		//Ejemplo de cadena de texto de longitud 2. 
+		if (fragment[0].equalsIgnoreCase("NEWINST")) {
+			return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(fragment[1]));
 
+		}
 	}
 }

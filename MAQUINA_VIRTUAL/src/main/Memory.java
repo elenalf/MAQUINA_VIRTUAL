@@ -101,8 +101,10 @@ public class Memory {
 	 */
 	private void resize(int pos) {
 		this.isEmpty = false;
-		if(pos >= this.size) {
-			
+		if (pos >= this.size) {
+			int newpos = pos *= 2;
+			Integer[] memory2 = new Integer[newpos];
+			memory2 = this.memory.clone();
 		}
 		// empty = false; la pone a false ya que significa que el array no va a estar
 		// vacio
