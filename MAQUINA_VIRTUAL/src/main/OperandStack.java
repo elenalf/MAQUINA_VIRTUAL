@@ -26,6 +26,8 @@ public class OperandStack {
 	 * Metodo que convierte el array en un String. Retorna los elementos del array
 	 * de manera formal pero no los imprime, se utilizará en otros metodos.
 	 * 
+	 * Complejidad: 0(n) donde n es el numero de elementos que hay en la pila,
+	 * 
 	 * @return Retorna el array convertido en un String
 	 */
 	public String toString() {
@@ -38,7 +40,6 @@ public class OperandStack {
 				chain += numero;
 			}
 		}
-
 		return chain;
 	}
 
@@ -55,6 +56,8 @@ public class OperandStack {
 	/**
 	 * Metodo que aniade elementos al array.
 	 * 
+	 * Complejidad: 0(1) ya que no variara en funcion del tamanio del dato
+	 * 
 	 * @param element es el elemento que se desea aniadir en el array stack
 	 * 
 	 * @return Retorna true si se ha podido aniadir el elemento correctamente, sino
@@ -68,7 +71,6 @@ public class OperandStack {
 		} else {
 			return false;
 		}
-
 	}
 
 	/**
@@ -87,15 +89,15 @@ public class OperandStack {
 			int ultimo = this.stack[this.num_elements - 1];
 			this.stack[this.num_elements - 1] = 0;
 			this.num_elements--;
-			
+
 			return ultimo;
-
 		}
-
 	}
 
 	/**
 	 * Metodo que nos indica cual es el ultimo elemento del array
+	 * 
+	 * Complejidad: 0(1) ya que no variara en funcion del tamanio del dato.
 	 * 
 	 * @return Retorna -1 si no es posible retornar la cima, sino devuelve el ultimo
 	 *         elemento
@@ -107,5 +109,4 @@ public class OperandStack {
 			return this.stack[this.num_elements - 1];
 		}
 	}
-
 }
