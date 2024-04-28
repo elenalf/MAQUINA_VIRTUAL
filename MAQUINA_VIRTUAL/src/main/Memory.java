@@ -34,20 +34,20 @@ public class Memory {
 	 * @return Retorna el array convertido en un String
 	 */
 	public String toString() {
-		String chain = "Memoria:";
+		String chain_M = "Memoria:";
 		if (isEmpty) {
-			chain += " <vacía>";
+			chain_M += " <vacía>";
 		} else {
 			int i = 0;
 			while (i < this.memory.length) {
 				if (this.memory[i] != null) {
 					String numero = " [" + i + "] " + this.memory[i] + "  ";
-					chain += numero;
+					chain_M += numero;
 				}
 				i++;
 			}
 		}
-		return chain;
+		return chain_M;
 
 	}
 
@@ -62,19 +62,10 @@ public class Memory {
 	 */
 	public boolean write(int pos, int value) {
 		if (pos >= 0) {
-			if (pos < this.memory.length) {
-				this.memory[pos] = value;
-				this.size++;
-				this.isEmpty = false;
-				return true;
-			} else {
-				this.resize(pos);
-				this.memory[pos] = value;
-				this.isEmpty = false;
-				return true;
-			}
-
-		} else {
+			this.resize(pos);
+			this.memory[pos] = value;
+			return true;
+		}else {
 			return false;
 		}
 

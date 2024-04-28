@@ -7,17 +7,15 @@ package main;
 public class Main {
 
 	public static void main(String[] args) {
-		Memory memory = new Memory();
-		System.out.println(memory.toString());
-		memory.write(0, 5);
-		memory.write(1, 2);
-		memory.write(2, 3);
-		System.out.println(memory.toString());
-		System.out.println(memory.read(1));
-		memory.write(10, 4);
-		System.out.println(memory.toString());
-		memory.write(5, 1);
-		System.out.println(memory.toString());
+		CPU cpu = new CPU();
+		OperandStack pila = new OperandStack();
+		Memory memoria = new Memory();
+		pila.push(5);
+		pila.push(2);
+		pila.push(3);
+		memoria.write(0, 2);
+		memoria.write(1, 3);
+		System.out.println(cpu.toString());
 
 	}
 

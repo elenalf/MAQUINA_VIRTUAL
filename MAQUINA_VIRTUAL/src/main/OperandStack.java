@@ -31,16 +31,16 @@ public class OperandStack {
 	 * @return Retorna el array convertido en un String
 	 */
 	public String toString() {
-		String chain = "Pila:";
+		String chain_P = "Pila:";
 		if (this.isEmpty()) {
-			chain += " <vacía>";
+			chain_P += " <vacía>";
 		} else {
 			for (int i = 0; i < this.num_elements; i++) {
 				String numero = " " + this.stack[i] + "  ";
-				chain += numero;
+				chain_P += numero;
 			}
 		}
-		return chain;
+		return chain_P;
 	}
 
 	/**

@@ -11,5 +11,8 @@ public class ByteCode {
 	 */
 	private ENUM_BYTECODE name;
 	private int param; // es necesario para las intrucciones PUSH, STORE y LOAD
-
+	
+	public ByteCode(ENUM_BYTECODE bc) {
+		this.name = bc;
+	}
 }
