@@ -12,8 +12,39 @@ public class Command {
 	 * Atributos
 	 */
 	private ENUM_COMMAND command;
-	private ByteCode instruction; // es el valor que se toma cuando se hace referencia al comando NEWINST
-	private int replace; // hace referencia al comando REPLACE
+	private ByteCode instruction;
+	private int replace;
+
+	/**
+	 * Constructora 1
+	 * 
+	 * @param com es un comando
+	 */
+	public Command(ENUM_COMMAND com) {
+		this.command = com;
+	}
+
+	/**
+	 * Constructora 2
+	 * 
+	 * @param com es un comando
+	 * @param bc  es un bytecode
+	 */
+	public Command(ENUM_COMMAND com, ByteCode bc) {
+		this.command = com;
+		this.instruction = bc;
+	}
+
+	/**
+	 * Constructora 3
+	 * 
+	 * @param com es un comando
+	 * @param num es el numero que hace referencia al comando REPLACE
+	 */
+	public Command(ENUM_COMMAND com, int num) {
+		this.command = com;
+		this.replace = num;
+	}
 
 	/**
 	 * Metodo que lleva a cabo la ejecucion del comando introducido por consola

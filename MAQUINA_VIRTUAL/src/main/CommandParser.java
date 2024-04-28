@@ -34,6 +34,8 @@ public class CommandParser {
 				}else if(division[0].equalsIgnoreCase("replace")) {
 					return new Command(ENUM_COMMAND.REPLACE);
 				}
+			default:
+				return null;
 		}
 	}
 }
