@@ -65,7 +65,7 @@ public class OperandStack {
 	 */
 	public boolean push(int element) {
 		if (this.num_elements < this.MAX_STACK) {
-			this.stack[this.num_elements] += element;
+			this.stack[this.num_elements] = element;
 			this.num_elements++;
 			return true;
 		} else {

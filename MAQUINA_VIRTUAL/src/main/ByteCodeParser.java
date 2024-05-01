@@ -34,11 +34,11 @@ public class ByteCodeParser {
 			}
 		case 2:
 			if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("push")) {
-				return new ByteCode(ENUM_BYTECODE.PUSH);
+				return new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(division[1]));
 			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("load")) {
-				return new ByteCode(ENUM_BYTECODE.LOAD);
+				return new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(division[1]));
 			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("store")) {
-				return new ByteCode(ENUM_BYTECODE.STORE);
+				return new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(division[1]));
 			}
 		default:
 			return null;

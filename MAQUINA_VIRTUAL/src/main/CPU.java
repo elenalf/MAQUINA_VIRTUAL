@@ -66,23 +66,25 @@ public class CPU {
 		}else {
 			return false;
 		}
+	}
 		
 		//analizar que tipo de bytecode es
 		//hacer un switch con todos los tipos de bytecode y se ejecuta en función de los metodos que tenemos: SumaPila, RestaPila...
 		//retorna true si se ha podido llevar a cabo la operación(método), sino retorna false
 		//
-	}
+	
 	
 	public String toString () {
 		String cadena_P = this.pila.toString();
 		String cadena_M = this.memoria.toString();
-		String chain = cadena_P + "\n" + cadena_M;
+		String chain = "El estado de la CPU: " + "\n" + cadena_P + "\n" + cadena_M;
 		return chain;
 		
 	}
 	
 	public void erase() {
-		
+		this.memoria = null;
+		this.pila = null;
 	}
 	
 	public boolean isHalt() {
@@ -90,47 +92,94 @@ public class CPU {
 		
 	}
 	
+	public void runCPU() {
+		this.halt = false;
+	}
+	
 	public boolean SumaPila() {
-		return true;
-		
+		int elemento1 = this.pila.pop();
+		int elemento2 = this.pila.pop();
+		if(elemento1 == -1 || elemento2 == -1) {
+			return false;
+		}else {
+			int resultado = elemento1 + elemento2;
+			this.pila.push(resultado);
+			return true;
+		}	
 	}
 	
 	public boolean RestaPila() {
-		return true;
+		int elemento1 = this.pila.pop();
+		int elemento2 = this.pila.pop();
+		if(elemento1 == -1 || elemento2 == -1) {
+			return false;
+		}else {
+			int resultado = elemento1 - elemento2;
+			this.pila.push(resultado);
+			return true;
+		}
 		
 	}
 	
 	public boolean DividePila() {
-		return true;
+		int elemento1 = this.pila.pop();
+		int elemento2 = this.pila.pop();
+		if(elemento1 == -1 || elemento2 == -1) {
+			return false;
+		}else {
+			int resultado = elemento1 / elemento2;
+			this.pila.push(resultado);
+			return true;
+		}
 		
 	}
 	
 	public boolean MultiplicaPila() {
-		return true;
+		int elemento1 = this.pila.pop();
+		int elemento2 = this.pila.pop();
+		if(elemento1 == -1 || elemento2 == -1) {
+			return false;
+		}else {
+			int resultado = elemento1 * elemento2;
+			this.pila.push(resultado);
+			return true;
+		}
 		
 	}
 	
 	public boolean Push(int n) {
+		this.pila.push(n);
 		return true;
 		
 	}
 	
 	public boolean Load(int pos) {
+		int elemento = this.memoria.read(pos);
+		this.pila.push(elemento);
 		return true;
 		
 	}
 	
 	public boolean Store(int pos) {
-		return true;
+		int elemento = this.pila.pop();
+		if(elemento == -1) {
+			return false;
+		}else {
+			this.memoria.write(pos, elemento);
+			return true;
+		}
+		
 		
 	}
 	
 	public boolean Out() {
+		System.out.println("El elemento de la cima de la pila es " + this.pila.getCima());
 		return true;
 		
 	}
 	
 	public boolean Halt() {
+		this.halt = false;
 		return true;
 		
 	}

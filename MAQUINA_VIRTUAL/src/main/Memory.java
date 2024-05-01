@@ -21,7 +21,7 @@ public class Memory {
 	public Memory() {
 		this.MAX_MEMORY = 10;
 		this.memory = new Integer[this.MAX_MEMORY];
-		this.size = 0;
+		this.size = 10;
 		this.isEmpty = true;
 	}
 
@@ -96,8 +96,9 @@ public class Memory {
 	 * @param pos Es la posicion a la que se quiere llegar en el array
 	 */
 	private void resize(int pos) {
-		this.isEmpty = false;
+		
 		if (pos >= this.size) {
+			this.isEmpty = false;
 			Integer[] memory2 = new Integer[pos * 2];
 			for (int i = 0; i < this.memory.length; i++) {
 				memory2[i] = this.memory[i];

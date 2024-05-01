@@ -1,4 +1,5 @@
 package main;
+
 /**
  * Clase Main
  * 
@@ -7,7 +8,8 @@ package main;
 public class Main {
 
 	public static void main(String[] args) {
-		CPU cpu = new CPU();
+
+		
 		OperandStack pila = new OperandStack();
 		Memory memoria = new Memory();
 		pila.push(5);
@@ -15,7 +17,13 @@ public class Main {
 		pila.push(3);
 		memoria.write(0, 2);
 		memoria.write(1, 3);
+		CPU cpu = new CPU();
 		System.out.println(cpu.toString());
+		cpu.toString();
+
+		/**
+		 * Engine eng = new Engine(); eng.start();
+		 */
 
 	}
 

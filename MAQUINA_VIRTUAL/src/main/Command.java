@@ -53,6 +53,14 @@ public class Command {
 	 * @return retorna true si el comando es correcto, sino retornara false
 	 */
 	public boolean execute(Engine engine) {
-
+		if(this.command == ENUM_COMMAND.REPLACE){
+			engine.CommandReplace(this.replace);
+		}else if(this.command == ENUM_COMMAND.RESET) {
+			engine.CommandReset();
+		}else if(this.command == ENUM_COMMAND.NEWINST) {
+			engine.CommandNewinst(this.instruction);
+		}
+		//if else con todos los comandos disponibles
+		//engine va ejecutando todos los comandos 
 	}
 }

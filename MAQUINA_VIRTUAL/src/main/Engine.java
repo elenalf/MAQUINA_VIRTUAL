@@ -18,56 +18,67 @@ public class Engine {
 
 	private ByteCodeProgram program; // representa el programa actual
 	private boolean end; // acabar con la ejecución
+	private Scanner sc;
+	private CPU cpu;
 
 	/**
 	 * Constructora
 	 */
+	public Engine() {
+		this.end = false;
+		this.program = new ByteCodeProgram();
+		this.sc = new Scanner(System.in);
+		this.cpu = new CPU();
+	}
 
 	/**
 	 * Metodo que muestra el menu de funcionamiento del programa
 	 */
-	public void menu() {
-		System.out.println("   HELP - Muestra esta ayuda");
-		System.out.println("   QUIT - Cierra la aplicación");
-		System.out.println("   RUN - Ejecuta el programa");
-		System.out.println("   NEWINST BYTECODE - Introduce una nueva instrucción al programa");
-		System.out.println("   RESET - Vacía el programa actual");
-		System.out.println("   REPLACE N - Reemplaza la instrucción N por la solicitada al usuario");
+	public boolean CommandHelp() {
+		System.out.println("   HELP - Muestra esta ayuda" +
+		"   QUIT - Cierra la aplicación" +
+		"   RUN - Ejecuta el programa" +
+		"   NEWINST BYTECODE - Introduce una nueva instrucción al programa" +
+		"   RESET - Vacía el programa actual" +
+		"   REPLACE N - Reemplaza la instrucción N por la solicitada al usuario");
+		return true;
 	}
 
 	/**
 	 * Metodo que cierra el programa
 	 */
-	public void quit() {
-
+	public boolean CommandQuit() {
+		System.out.println("Has salido del programa");
+		return true;
 	}
 
 	/**
 	 * Metodo que ejecuta las instrucciones que el usuario haya introducido por
 	 * consola
 	 */
-	public void run() {
-
+	public boolean CommandRun() {
+		
 	}
 
 	/**
 	 * Metodo por el que el usuario va introduciendo las instrucciones del programa
 	 */
-	public void newinst_bytecode() {
+	public boolean CommandNewinst(ByteCode bc) {
+		this.program.setInstruction(bc);
 
 	}
 
 	/**
 	 * Metodo que vacia el programa
 	 */
-	public void reset() {
-
+	public boolean CommandReset() {
+		this.program.reset();
 	}
 
 	/**
 	 * Metodo que reemplaza una instruccion por otra que el usuario introduzca
 	 */
-	public void replace() {
+	public boolean CommandReplace(int param) {
 
 	}
 
@@ -75,13 +86,23 @@ public class Engine {
 	 * Metodo que maneja todo el flujo del programa
 	 */
 	public void start() {
-		Scanner sc = new Scanner(System.in);
-		menu();
-		System.out.println();
-		System.out.println("¿Qué instrucción desea ejecutar? Por favor respete la sintaxis: ");
-		String opcion = sc.nextLine();
-		System.out.println(ANSI_RED + "Comienza la ejecucción de " + opcion.toUpperCase());
-		System.out.println();
+		while (!this.end) {
+			String entrada = this.sc.nextLine();
+			Command co = CommandParser.parse(entrada);
+			System.out.println("Comienza la ejecucción de " + entrada.toUpperCase());
+			if (co != null) {
+				if (!co.execute(this)) { 
+					System.out.println(ANSI_RED + "Error: Ejecución incorrecta del comando");
+				}
+			} else {
+				System.out.println(ANSI_RED + "Error: Comando incorrecto");
+			}
 
+		}
 	}
 }
+
+/**
+ * Es la única clase que imprime mensajes por pantalla - Atributo:
+ * ByteCodeProgram - Atributo: CPU - Atributo: booleano = end - Atributo:
+ */
