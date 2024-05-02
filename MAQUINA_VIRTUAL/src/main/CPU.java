@@ -72,7 +72,7 @@ public class CPU {
 	public String toString() {
 		String cadena_P = this.pila.toString();
 		String cadena_M = this.memoria.toString();
-		String chain = "El estado de la CPU: " + "\n" + cadena_P + "\n" + cadena_M;
+		String chain = "Estado de la CPU: " + "\n" + cadena_P + "\n" + cadena_M;
 		return chain;
 
 	}

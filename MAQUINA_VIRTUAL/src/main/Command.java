@@ -59,6 +59,14 @@ public class Command {
 			engine.CommandReset();
 		}else if(this.command == ENUM_COMMAND.NEWINST) {
 			engine.CommandNewinst(this.instruction);
+		}else if(this.command == ENUM_COMMAND.HELP) {
+			engine.CommandHelp();
+		}else if(this.command == ENUM_COMMAND.QUIT) {
+			engine.CommandQuit();
+		}else if(this.command == ENUM_COMMAND.RUN) {
+			engine.CommandRun();
+		}else {
+			return false;
 		}
 		//if else con todos los comandos disponibles
 		//engine va ejecutando todos los comandos 
