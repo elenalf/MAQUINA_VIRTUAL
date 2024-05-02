@@ -64,6 +64,7 @@ public class Memory {
 		if (pos >= 0) {
 			this.resize(pos);
 			this.memory[pos] = value;
+			this.isEmpty = false;
 			return true;
 		}else {
 			return false;

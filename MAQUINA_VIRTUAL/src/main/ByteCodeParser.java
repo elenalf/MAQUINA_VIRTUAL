@@ -16,20 +16,20 @@ public class ByteCodeParser {
 	 *         coincide con ningun bytecode
 	 */
 	public static ByteCode parse(String s) {
-		String[] division = s.split(" ");
+		String[] division = s.toLowerCase().split(" ");
 		switch (division.length) {
 		case 1:
-			if (division[0].equalsIgnoreCase("add")) {
+			if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("add")) {
 				return new ByteCode(ENUM_BYTECODE.ADD);
-			} else if (division[0].equalsIgnoreCase("div")) {
+			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("div")) {
 				return new ByteCode(ENUM_BYTECODE.DIV);
-			} else if (division[0].equalsIgnoreCase("mul")) {
+			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("mul")) {
 				return new ByteCode(ENUM_BYTECODE.MUL);
-			} else if (division[0].equalsIgnoreCase("sub")) {
+			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("sub")) {
 				return new ByteCode(ENUM_BYTECODE.SUB);
-			} else if (division[0].equalsIgnoreCase("out")) {
+			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("out")) {
 				return new ByteCode(ENUM_BYTECODE.OUT);
-			} else if (division[0].equalsIgnoreCase("halt")) {
+			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("halt")) {
 				return new ByteCode(ENUM_BYTECODE.HALT);
 			}
 		case 2:

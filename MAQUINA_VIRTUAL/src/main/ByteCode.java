@@ -33,7 +33,8 @@ public class ByteCode {
 	 * @return
 	 */
 	public String toString() {
-		
+		String chain = this.name.toString().toUpperCase() + this.param;
+		return chain;
 	}
 	
 	/**
@@ -41,7 +42,7 @@ public class ByteCode {
 	 * @return
 	 */
 	public String getInstruction() {
-		
+		return this.name.toString();
 	}
 	
 	
@@ -50,6 +51,6 @@ public class ByteCode {
 	 * @return
 	 */
 	public int getparam() {
-		
+		return this.param;
 	}
 }

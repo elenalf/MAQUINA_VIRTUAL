@@ -14,7 +14,7 @@ public class CommandParser {
 	 * @return si line no corresponde con la sintaxis de algun comando retorna null
 	 */
 	public static Command parse(String line) {
-		String[] division = line.split(" ");
+		String[] division = line.toLowerCase().split(" ");
 		switch (division.length) {
 		case 1:
 			if (division[0].equalsIgnoreCase("help")) {

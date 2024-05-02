@@ -36,6 +36,19 @@ public class ByteCodeProgram {
 		//Para que se puedan "ejecutar" ---> this.program[i].toString();
 		//Concatenación de todo cpu + operandStack + memory
 	}
+	
+	public void setInstrucion(ByteCode bc) {
+		this.program[this.num_elements] = bc;
+		this.num_elements ++;
+	}
+	
+	public String toString() {
+		String chain = "Programa almacenado: ";
+		for(int i = 0; i < this.program.length; i++) {
+			chain += this.program[i];
+		}
+		return chain;
+	}
 }
 /**
  * - Atributo: array de tipo bytecode

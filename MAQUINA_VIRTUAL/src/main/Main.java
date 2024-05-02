@@ -10,16 +10,20 @@ public class Main {
 	public static void main(String[] args) {
 
 		
-		OperandStack pila = new OperandStack();
-		Memory memoria = new Memory();
-		pila.push(5);
-		pila.push(2);
-		pila.push(3);
-		memoria.write(0, 2);
-		memoria.write(1, 3);
 		CPU cpu = new CPU();
+		cpu.Push(5);
+		cpu.Push(4);
+		cpu.Push(10);
+		cpu.Push(9);
+		cpu.Push(8);
+		cpu.Store(1);
 		System.out.println(cpu.toString());
-		cpu.toString();
+		cpu.Load(1);
+		System.out.println(cpu.toString());
+		cpu.erase();
+		System.out.println(cpu.toString());
+		
+		
 
 		/**
 		 * Engine eng = new Engine(); eng.start();
