@@ -26,7 +26,7 @@ public class CommandParser {
 			} else if (division[0].equalsIgnoreCase("reset")) {
 				return new Command(ENUM_COMMAND.RESET);
 			}
-		case 2:
+		case 3:
 			if (division[0].equalsIgnoreCase("newinst")) {
 				return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(division[1]));
 			} else if (division[0].equalsIgnoreCase("replace")) {

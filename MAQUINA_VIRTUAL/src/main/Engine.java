@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Engine {
 	// pluggling para cambiar el color del texto
 	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_RESET = "\033[0m";
 
 	/**
 	 * Atributos
@@ -35,12 +36,10 @@ public class Engine {
 	 * Metodo que muestra el menu de funcionamiento del programa
 	 */
 	public boolean CommandHelp() {
-		System.out.println("   HELP - Muestra esta ayuda" +
-		"   QUIT - Cierra la aplicación" +
-		"   RUN - Ejecuta el programa" +
-		"   NEWINST BYTECODE - Introduce una nueva instrucción al programa" +
-		"   RESET - Vacía el programa actual" +
-		"   REPLACE N - Reemplaza la instrucción N por la solicitada al usuario");
+		System.out.println("   HELP - Muestra esta ayuda \n" + "   QUIT - Cierra la aplicación \n"
+				+ "   RUN - Ejecuta el programa \n" + "   NEWINST BYTECODE - Introduce una nueva instrucción al programa \n"
+				+ "   RESET - Vacía el programa actual \n"
+				+ "   REPLACE N - Reemplaza la instrucción N por la solicitada al usuario");
 		return true;
 	}
 
@@ -48,8 +47,7 @@ public class Engine {
 	 * Metodo que cierra el programa
 	 */
 	public boolean CommandQuit() {
-		System.out.println("Has salido del programa");
-		return true;
+		return this.end = true;
 	}
 
 	/**
@@ -57,7 +55,8 @@ public class Engine {
 	 * consola
 	 */
 	public boolean CommandRun() {
-		
+		this.program.runProgram(cpu);
+		return true;
 	}
 
 	/**
@@ -65,6 +64,7 @@ public class Engine {
 	 */
 	public boolean CommandNewinst(ByteCode bc) {
 		this.program.setInstruction(bc);
+		return true;
 
 	}
 
@@ -73,13 +73,15 @@ public class Engine {
 	 */
 	public boolean CommandReset() {
 		this.program.reset();
+		return true;
 	}
 
 	/**
 	 * Metodo que reemplaza una instruccion por otra que el usuario introduzca
 	 */
 	public boolean CommandReplace(int param) {
-
+		return true;
+		
 	}
 
 	/**
@@ -89,13 +91,13 @@ public class Engine {
 		while (!this.end) {
 			String entrada = this.sc.nextLine();
 			Command co = CommandParser.parse(entrada);
-			System.out.println("Comienza la ejecucción de " + entrada.toUpperCase());
 			if (co != null) {
-				if (!co.execute(this)) { 
-					System.out.println(ANSI_RED + "Error: Ejecución incorrecta del comando");
+				System.out.println("Comienza la ejecucción de " + co.getCommand());
+				if (!co.execute(this)) {
+					System.out.println(ANSI_RED + "Error: Ejecución incorrecta del comando" + ANSI_RESET);
 				}
 			} else {
-				System.out.println(ANSI_RED + "Error: Comando incorrecto");
+				System.out.println(ANSI_RED + "Error: Comando incorrecto" + ANSI_RESET);
 			}
 
 		}

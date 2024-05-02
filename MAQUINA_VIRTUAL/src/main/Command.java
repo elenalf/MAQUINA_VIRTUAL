@@ -53,22 +53,38 @@ public class Command {
 	 * @return retorna true si el comando es correcto, sino retornara false
 	 */
 	public boolean execute(Engine engine) {
-		if(this.command == ENUM_COMMAND.REPLACE){
-			engine.CommandReplace(this.replace);
-		}else if(this.command == ENUM_COMMAND.RESET) {
-			engine.CommandReset();
-		}else if(this.command == ENUM_COMMAND.NEWINST) {
-			engine.CommandNewinst(this.instruction);
-		}else if(this.command == ENUM_COMMAND.HELP) {
-			engine.CommandHelp();
-		}else if(this.command == ENUM_COMMAND.QUIT) {
-			engine.CommandQuit();
-		}else if(this.command == ENUM_COMMAND.RUN) {
-			engine.CommandRun();
-		}else {
-			return false;
+		switch(this.command) {
+			case HELP:
+				engine.CommandHelp();
+				return true;
+			case QUIT:
+				engine.CommandQuit();
+				return true;
+			case RUN:
+				engine.CommandRun();
+				return true;
+			case REPLACE:
+				engine.CommandReplace(this.replace);
+				return true;
+			case RESET:
+				engine.CommandReset();
+				return true;
+			case NEWINST:
+				engine.CommandNewinst(this.instruction);
+				return true;
+			default:
+				return false;
 		}
+		
 		//if else con todos los comandos disponibles
 		//engine va ejecutando todos los comandos 
+	}
+	
+	public ENUM_COMMAND getCommand() {
+		return this.command;
+	}
+	
+	public ByteCode getInstruction() {
+		return this.instruction;
 	}
 }
