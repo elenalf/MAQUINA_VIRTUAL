@@ -55,23 +55,17 @@ public class Command {
 	public boolean execute(Engine engine) {
 		switch(this.command) {
 			case HELP:
-				engine.CommandHelp();
-				return true;
+				return engine.CommandHelp();
 			case QUIT:
-				engine.CommandQuit();
-				return true;
+				return engine.CommandQuit();
 			case RUN:
-				engine.CommandRun();
-				return true;
+				return engine.CommandRun();
 			case REPLACE:
-				engine.CommandReplace(this.replace);
-				return true;
+				return engine.CommandReplace(this.replace);
 			case RESET:
-				engine.CommandReset();
-				return true;
+				return engine.CommandReset();
 			case NEWINST:
-				engine.CommandNewinst(this.instruction);
-				return true;
+				return engine.CommandNewinst(this ,this.instruction);
 			default:
 				return false;
 		}

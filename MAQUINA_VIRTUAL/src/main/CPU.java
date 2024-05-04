@@ -31,33 +31,27 @@ public class CPU {
 	 * @return si la ejecucion genera un error retorna false
 	 */
 	public boolean execute(ByteCode instr) {
-		String conversion = instr.toString().toLowerCase();
-		String[] division = conversion.split(" ");
-		switch (division.length) {
-		case 2:
-			if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("add")) {
-				this.SumaPila();
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("sub")) {
-				this.RestaPila();
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("mul")) {
-				this.MultiplicaPila();
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("div")) {
-				this.DividePila();
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("out")) {
-				this.Out();
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("halt")) {
-				this.Halt();
-			}
-		case 3:
-			if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("push")) {
-				this.Push(Integer.parseInt(division[2]));
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("load")) {
-				this.Load(Integer.parseInt(division[2]));
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("store")) {
-				this.Store(Integer.parseInt(division[2]));
-			}
-		default:
-			return false;
+		switch(instr.getInstruction()) {
+			case ADD:
+				return this.SumaPila();
+			case MUL:
+				return this.MultiplicaPila();
+			case DIV:
+				return this.DividePila();
+			case SUB:
+				return this.RestaPila();
+			case PUSH:
+				return this.Push(instr.getparam());
+			case LOAD:
+				return this.Load(instr.getparam());
+			case STORE:
+				return this.Store(instr.getparam());
+			case OUT:
+				return this.Out();
+			case HALT:
+				return this.Halt();
+			default:
+				return false;
 		}
 	}
 

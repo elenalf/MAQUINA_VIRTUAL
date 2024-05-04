@@ -39,10 +39,10 @@ public class ByteCodeProgram {
 		String mensaje = "";
 		for (int i = 0; i < this.num_elements; i++) {
 			if (!cpu.isHalt() && cpu.execute(this.program[i])) {
-				mensaje += "El estado de la máquina tras ejecutar el bytecode " + this.toString() + " es: " + "\n";
-				cpu.toString();
+				mensaje += "El estado de la máquina tras la ejecición de: " + this.program[i].getInstruction() + " " + this.program[i].getparam() + " es: " + cpu.toString() + "\n";
+				
 			} else if (!cpu.isHalt()) {
-				mensaje += ANSI_RED + "Error: Ejecución incorrecta del comando";
+				mensaje += ANSI_RED + "\n Eror: Ejecución incorrecta del comando";
 
 			}
 		}
@@ -80,8 +80,11 @@ public class ByteCodeProgram {
 			this.resize(pos);
 			this.program[pos] = bc;
 			this.num_elements++;
+			return true;
+		}else {
+			return false;
 		}
-		return true;
+		
 
 	}
 
@@ -95,7 +98,7 @@ public class ByteCodeProgram {
 	public String toString() {
 		String chain = "Programa almacenado: \n";
 		for (int i = 0; i < this.num_elements; i++) {
-			chain += i + ": " + this.program[i].getInstruction() + " " + this.program[i].getparam() + "\n";
+			chain += i + " : " + this.program[i].getInstruction() + " " + this.program[i].getparam() + "\n";
 		}
 		return chain;
 	}

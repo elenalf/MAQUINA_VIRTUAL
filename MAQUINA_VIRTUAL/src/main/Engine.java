@@ -47,6 +47,7 @@ public class Engine {
 	 * Metodo que cierra el programa
 	 */
 	public boolean CommandQuit() {
+		System.out.println("Saliendo del sistema...");
 		return this.end = true;
 	}
 
@@ -55,16 +56,22 @@ public class Engine {
 	 * consola
 	 */
 	public boolean CommandRun() {
-		this.program.runProgram(cpu);
+		System.out.println(this.program.runProgram(this.cpu));
 		return true;
 	}
 
 	/**
 	 * Metodo por el que el usuario va introduciendo las instrucciones del programa
 	 */
-	public boolean CommandNewinst(ByteCode bc) {
-		this.program.setInstruction(bc);
-		return true;
+	public boolean CommandNewinst(Command co, ByteCode instr) {
+		if(co.getInstruction() != null) {
+			this.program.setInstruction(co.getInstruction());
+			System.out.println(this.program.toString());
+			return true;
+		}else {
+			return false;
+		}
+		
 
 	}
 
@@ -92,8 +99,10 @@ public class Engine {
 			String entrada = this.sc.nextLine();
 			Command co = CommandParser.parse(entrada);
 			if (co != null) {
-				System.out.println("Comienza la ejecucción de " + co.getCommand());
-				if (!co.execute(this)) {
+				System.out.println("Comienza la ejecucción de " + co.getCommand() + "\n");
+				if (co.execute(this)) {
+					
+				}else {
 					System.out.println(ANSI_RED + "Error: Ejecución incorrecta del comando" + ANSI_RESET);
 				}
 			} else {

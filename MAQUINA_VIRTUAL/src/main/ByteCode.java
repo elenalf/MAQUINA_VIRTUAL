@@ -51,8 +51,8 @@ public class ByteCode {
 	 * 
 	 * @return devuelve el nombre del ByteCode
 	 */
-	public String getInstruction() {
-		return this.name.toString();
+	public ENUM_BYTECODE getInstruction() {
+		return this.name;
 	}
 
 	/**
@@ -62,6 +62,17 @@ public class ByteCode {
 	 * 
 	 * @return devuelve el parametro del ByteCode
 	 */
+	public String getNombreCompleto() {
+		if (this.name == ENUM_BYTECODE.ADD || this.name == ENUM_BYTECODE.DIV || this.name == ENUM_BYTECODE.HALT
+				|| this.name == ENUM_BYTECODE.LOAD || this.name == ENUM_BYTECODE.MUL || this.name == ENUM_BYTECODE.OUT
+				|| this.name == ENUM_BYTECODE.PUSH || this.name == ENUM_BYTECODE.STORE
+				|| this.name == ENUM_BYTECODE.SUB) {
+			return "";
+		} else {
+			return "" + this.param;
+		}
+	}
+	
 	public int getparam() {
 		return this.param;
 	}
