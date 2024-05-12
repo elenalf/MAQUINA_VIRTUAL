@@ -17,23 +17,45 @@ public class CommandParser {
 		String[] division = line.toLowerCase().split(" ");
 		switch (division.length) {
 		case 1:
-			if (division[0].equalsIgnoreCase("help")) {
+			switch (division[0]) {
+			case "help":
 				return new Command(ENUM_COMMAND.HELP);
-			} else if (division[0].equalsIgnoreCase("quit")) {
+			case "quit":
 				return new Command(ENUM_COMMAND.QUIT);
-			} else if (division[0].equalsIgnoreCase("run")) {
+			case "run":
 				return new Command(ENUM_COMMAND.RUN);
-			} else if (division[0].equalsIgnoreCase("reset")) {
+			case "reset":
 				return new Command(ENUM_COMMAND.RESET);
+			default:
+				return null;
+			}
+		case 2:
+			if (division[1] != null) {
+				switch (division[0]) {
+				case "replace":
+					return new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(division[1]));
+				case "newinst":
+					return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(division[1]));
+				default:
+					return null;
+				}
+			} else {
+				return null;
 			}
 		case 3:
-			if (division[0].equalsIgnoreCase("newinst")) {
-				return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(division[1]));
-			} else if (division[0].equalsIgnoreCase("replace")) {
-				return new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(division[1]));
+			switch (division[0]) {
+			case "newinst":
+				if (division[1] != null) {
+					return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(division[1] + " " + division[2]));
+				} else {
+					return null;
+				}
+			default:
+				return null;
 			}
 		default:
 			return null;
 		}
+
 	}
 }

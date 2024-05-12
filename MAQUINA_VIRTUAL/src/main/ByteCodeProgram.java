@@ -39,8 +39,9 @@ public class ByteCodeProgram {
 		String mensaje = "";
 		for (int i = 0; i < this.num_elements; i++) {
 			if (!cpu.isHalt() && cpu.execute(this.program[i])) {
-				mensaje += "El estado de la máquina tras la ejecición de: " + this.program[i].getInstruction() + " " + this.program[i].getparam() + " es: " + cpu.toString() + "\n";
-				
+				mensaje += "El estado de la máquina tras la ejecición de: " + this.program[i].getInstruction() + " "
+						+ this.program[i].getparam() + " es: " + cpu.toString() + "\n";
+
 			} else if (!cpu.isHalt()) {
 				mensaje += ANSI_RED + "\n Eror: Ejecución incorrecta del comando";
 
@@ -60,9 +61,14 @@ public class ByteCodeProgram {
 	 * @param bc es el bytecode que se va a aniadir al programa
 	 */
 	public void setInstruction(ByteCode bc) {
-		this.resize(this.num_elements);
-		this.program[this.num_elements] = bc;
-		this.num_elements++;
+		if (this.num_elements >= this.program.length) {
+			this.resize();
+			this.program[this.num_elements] = bc;
+			this.num_elements++;
+		} else {
+			this.program[this.num_elements] = bc;
+			this.num_elements++;
+		}
 	}
 
 	/**
@@ -77,15 +83,17 @@ public class ByteCodeProgram {
 	 */
 	public boolean setInstructionPosition(ByteCode bc, int pos) {
 		if(pos >= 0) {
-			this.resize(pos);
-			this.program[pos] = bc;
-			this.num_elements++;
-			return true;
+			if(pos >= this.program.length) {
+				this.resize();
+				this.program[pos] = bc;
+				return true;
+			}else {
+				this.program[pos] = bc;
+				return true;
+			}
 		}else {
 			return false;
 		}
-		
-
 	}
 
 	/**
@@ -110,14 +118,12 @@ public class ByteCodeProgram {
 	 * 
 	 * @param pos Es la posicion a la que se quiere llegar en el programa
 	 */
-	private void resize(int pos) {
-		if (pos >= this.size) {
-			ByteCode[] program2 = new ByteCode[this.size * 2];
-			for (int i = 0; i < this.program.length; i++) {
-				program2[i] = this.program[i];
-			}
-			this.program = program2;
+	private void resize() {
+		ByteCode[] program2 = new ByteCode[this.size * 2];
+		for (int i = 0; i < this.program.length; i++) {
+			program2[i] = this.program[i];
 		}
+		this.program = program2;
 	}
 
 	/**
@@ -152,5 +158,9 @@ public class ByteCodeProgram {
 	public void reset() {
 		this.program = new ByteCode[this.size];
 		this.num_elements = 0;
+	}
+
+	public int programSize() {
+		return this.program.length;
 	}
 }

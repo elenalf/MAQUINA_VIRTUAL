@@ -47,8 +47,10 @@ public class Engine {
 	 * Metodo que cierra el programa
 	 */
 	public boolean CommandQuit() {
+		System.out.println(this.program.toString());
 		System.out.println("Saliendo del sistema...");
-		return this.end = true;
+		this.end = true;
+		return true;
 	}
 
 	/**
@@ -57,13 +59,14 @@ public class Engine {
 	 */
 	public boolean CommandRun() {
 		System.out.println(this.program.runProgram(this.cpu));
+		System.out.println(this.program.toString());
 		return true;
 	}
 
 	/**
 	 * Metodo por el que el usuario va introduciendo las instrucciones del programa
 	 */
-	public boolean CommandNewinst(Command co, ByteCode instr) {
+	public boolean CommandNewinst(Command co) {
 		if(co.getInstruction() != null) {
 			this.program.setInstruction(co.getInstruction());
 			System.out.println(this.program.toString());
@@ -86,9 +89,19 @@ public class Engine {
 	/**
 	 * Metodo que reemplaza una instruccion por otra que el usuario introduzca
 	 */
-	public boolean CommandReplace(int param) {
-		return true;
-		
+	public boolean CommandReplace(Command co) {
+		if(co.getReplace() < this.program.programSize()) {
+			System.out.println("Nueva instruccion: ");
+			String entrada = sc.nextLine();
+			ByteCode bc = ByteCodeParser.parse(entrada);
+			this.program.setInstructionPosition(bc, co.getReplace());
+			System.out.println(this.program.toString());
+			return true;
+		}else {
+			System.out.println(this.program.toString());
+			return false;
+		}
+
 	}
 
 	/**
@@ -99,7 +112,7 @@ public class Engine {
 			String entrada = this.sc.nextLine();
 			Command co = CommandParser.parse(entrada);
 			if (co != null) {
-				System.out.println("Comienza la ejecucción de " + co.getCommand() + "\n");
+				System.out.println("Comienza la ejecucción de " + entrada.toUpperCase() + "\n");
 				if (co.execute(this)) {
 					
 				}else {
@@ -112,8 +125,3 @@ public class Engine {
 		}
 	}
 }
-
-/**
- * Es la única clase que imprime mensajes por pantalla - Atributo:
- * ByteCodeProgram - Atributo: CPU - Atributo: booleano = end - Atributo:
- */

@@ -43,7 +43,7 @@ public class CPU {
 			case PUSH:
 				return this.Push(instr.getparam());
 			case LOAD:
-				return this.Load(instr.getparam());
+				return this.Load(this.memoria.read(instr.getparam()));
 			case STORE:
 				return this.Store(instr.getparam());
 			case OUT:
@@ -244,7 +244,7 @@ public class CPU {
 	 */
 	public boolean Out() {
 		if (!this.pila.isEmpty()) {
-			System.out.println("El elemento de la cima de la pila es " + this.pila.getCima());
+			System.out.println("El elemento de la cima de la pila es: " + this.pila.getCima());
 			return true;
 		} else {
 			return false;

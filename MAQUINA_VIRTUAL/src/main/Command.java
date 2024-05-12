@@ -61,11 +61,11 @@ public class Command {
 			case RUN:
 				return engine.CommandRun();
 			case REPLACE:
-				return engine.CommandReplace(this.replace);
+				return engine.CommandReplace(this);
 			case RESET:
 				return engine.CommandReset();
 			case NEWINST:
-				return engine.CommandNewinst(this ,this.instruction);
+				return engine.CommandNewinst(this);
 			default:
 				return false;
 		}
@@ -80,5 +80,9 @@ public class Command {
 	
 	public ByteCode getInstruction() {
 		return this.instruction;
+	}
+	
+	public int getReplace() {
+		return this.replace;
 	}
 }

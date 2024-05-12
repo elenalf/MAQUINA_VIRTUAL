@@ -18,31 +18,40 @@ public class ByteCodeParser {
 	 *         coincide con ningun bytecode
 	 */
 	public static ByteCode parse(String s) {
-		String[] division = s.toLowerCase().split(" ");
-		switch (division.length) {
-		case 1:
-			if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("add")) {
+		String[] division = s.split(" ");
+		if (division.length == 2) {
+			if(division[1] != null) {
+				switch(division[0]) {
+				case "push":
+					return new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(division[1]));
+				case "load":
+					return new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(division[1]));
+				case "store":
+					return new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(division[1]));
+				default:
+					return null;
+				}
+			}else {
+				return null;
+			}
+		}else if(division.length == 1) {
+			switch(division[0]) {
+			case "add":
 				return new ByteCode(ENUM_BYTECODE.ADD);
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("div")) {
+			case "div":
 				return new ByteCode(ENUM_BYTECODE.DIV);
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("mul")) {
+			case "mul":
 				return new ByteCode(ENUM_BYTECODE.MUL);
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("sub")) {
+			case "sub":
 				return new ByteCode(ENUM_BYTECODE.SUB);
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("out")) {
+			case "out":
 				return new ByteCode(ENUM_BYTECODE.OUT);
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("halt")) {
+			case "halt":
 				return new ByteCode(ENUM_BYTECODE.HALT);
+			default:
+				return null;
 			}
-		case 2:
-			if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("push")) {
-				return new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(division[1]));
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("load")) {
-				return new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(division[1]));
-			} else if (division[0].equalsIgnoreCase("newinst") && division[1].equalsIgnoreCase("store")) {
-				return new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(division[1]));
-			}
-		default:
+		}else {
 			return null;
 		}
 	}
