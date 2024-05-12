@@ -56,6 +56,5 @@ public class CommandParser {
 		default:
 			return null;
 		}
-
 	}
 }

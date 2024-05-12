@@ -10,12 +10,12 @@ public class ByteCode {
 	 * Atributos
 	 */
 	private ENUM_BYTECODE name;
-	private int param; // es necesario para las intrucciones PUSH, STORE y LOAD
+	private int param;
 
 	/**
 	 * Constructora 1
 	 * 
-	 * @param bc es un bytecode
+	 * @param bc es un ByteCode
 	 */
 	public ByteCode(ENUM_BYTECODE bc) {
 		this.name = bc;
@@ -24,7 +24,7 @@ public class ByteCode {
 	/**
 	 * Constructora 2
 	 * 
-	 * @param bc  es un bytecode
+	 * @param bc  es un ByteCode
 	 * @param num es un parametro
 	 */
 	public ByteCode(ENUM_BYTECODE bc, int num) {
@@ -55,7 +55,11 @@ public class ByteCode {
 		return this.name;
 	}
 
-	
+	/**
+	 * Metodo que devuelve el parametro del ByteCode
+	 * 
+	 * @return devuelve el parametro del ByteCode
+	 */
 	public int getparam() {
 		return this.param;
 	}

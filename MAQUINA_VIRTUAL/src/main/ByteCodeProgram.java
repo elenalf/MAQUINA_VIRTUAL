@@ -26,11 +26,11 @@ public class ByteCodeProgram {
 	}
 
 	/**
-	 * Metodo que inicializa el programa, es decir, va ejecutando los bytecode
+	 * Metodo que inicializa el programa, es decir, va ejecutando los ByteCode
 	 * 
 	 * Complejidad = 0(n) donde n es el numero de elementos que hay en el programa
 	 * 
-	 * @param cpu es el objeto de la clase cpu, necesario para poder ejecutar el
+	 * @param cpu es el objeto de la clase CPU, necesario para poder ejecutar el
 	 *            programa y para saber el estado de la maquina
 	 * @return devuelve una cadena de String detallando todo el proceso de ejecucion
 	 *         del programa
@@ -54,11 +54,11 @@ public class ByteCodeProgram {
 	}
 
 	/**
-	 * Metodo que aniade al programa nuevas instruciones de tipo bytecode
+	 * Metodo que aniade al programa nuevas instruciones de tipo ByteCode
 	 * 
 	 * Complejidad = 0(1) ya que no variara en funcion del tamanio del dato
 	 * 
-	 * @param bc es el bytecode que se va a aniadir al programa
+	 * @param bc es el ByteCode que se va a aniadir al programa
 	 */
 	public void setInstruction(ByteCode bc) {
 		if (this.num_elements >= this.program.length) {
@@ -72,26 +72,26 @@ public class ByteCodeProgram {
 	}
 
 	/**
-	 * Metodo que aniade al programa un nuevo bytecode en una posicion especifica
+	 * Metodo que aniade al programa un nuevo ByteCode en una posicion especifica
 	 * 
 	 * Complejidad = 0(1) ya que no variara en funcion del tamanio del dato
 	 * 
-	 * @param bc  es el bytecode que se va a aniadir al programa
-	 * @param pos es la posicion en la que se va a escribir el bytecode
+	 * @param bc  es el ByteCode que se va a aniadir al programa
+	 * @param pos es la posicion en la que se va a escribir el ByteCode
 	 * @return devuelve true si se ha podido aniadir correctamente en el programa,
 	 *         de lo contrario, devuelve false
 	 */
 	public boolean setInstructionPosition(ByteCode bc, int pos) {
-		if(pos >= 0) {
-			if(pos >= this.program.length) {
+		if (pos >= 0) {
+			if (pos >= this.program.length) {
 				this.resize();
 				this.program[pos] = bc;
 				return true;
-			}else {
+			} else {
 				this.program[pos] = bc;
 				return true;
 			}
-		}else {
+		} else {
 			return false;
 		}
 	}
@@ -127,7 +127,7 @@ public class ByteCodeProgram {
 	}
 
 	/**
-	 * Metodo que devuelve el ultimo bytecode del programa
+	 * Metodo que devuelve el ultimo ByteCode del programa
 	 * 
 	 * Complejidad = 0(1) ya que no variara en funcion del tamanio del dato
 	 * 
@@ -138,12 +138,12 @@ public class ByteCodeProgram {
 	}
 
 	/**
-	 * Metodo que devuelve el bytecode en la posicion pos del programa
+	 * Metodo que devuelve el ByteCode en la posicion pos del programa
 	 * 
 	 * Complejidad = 0(1) ya que no variara en funcion del tamanio del dato
 	 * 
-	 * @param pos es la posicion en la que se desea saber que bytecode hay
-	 * @return devuelve el bytecode en la posicion indicada
+	 * @param pos es la posicion en la que se desea saber que ByteCode hay
+	 * @return devuelve el ByteCode en la posicion indicada
 	 */
 	public ByteCode getInstructionPosition(int pos) {
 		return this.program[pos];
@@ -160,6 +160,11 @@ public class ByteCodeProgram {
 		this.num_elements = 0;
 	}
 
+	/**
+	 * Metodo que nos indica el tamanio del array de program
+	 * 
+	 * @return devuelve el tamanio del array program
+	 */
 	public int programSize() {
 		return this.program.length;
 	}

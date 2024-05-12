@@ -17,8 +17,8 @@ public class Engine {
 	 * Atributos
 	 */
 
-	private ByteCodeProgram program; // representa el programa actual
-	private boolean end; // acabar con la ejecución
+	private ByteCodeProgram program;
+	private boolean end;
 	private Scanner sc;
 	private CPU cpu;
 
@@ -34,17 +34,24 @@ public class Engine {
 
 	/**
 	 * Metodo que muestra el menu de funcionamiento del programa
+	 * 
+	 * @return devuelve true si se ha podido ejecutar, de lo contrario, devuelve
+	 *         false
 	 */
 	public boolean CommandHelp() {
 		System.out.println("   HELP - Muestra esta ayuda \n" + "   QUIT - Cierra la aplicación \n"
-				+ "   RUN - Ejecuta el programa \n" + "   NEWINST BYTECODE - Introduce una nueva instrucción al programa \n"
+				+ "   RUN - Ejecuta el programa \n"
+				+ "   NEWINST BYTECODE - Introduce una nueva instrucción al programa \n"
 				+ "   RESET - Vacía el programa actual \n"
 				+ "   REPLACE N - Reemplaza la instrucción N por la solicitada al usuario");
 		return true;
 	}
 
 	/**
-	 * Metodo que cierra el programa
+	 * Metodo que finaliza el programa
+	 * 
+	 * @return devuelve true si se ha podido ejecutar, de lo contrario, devuelve
+	 *         false
 	 */
 	public boolean CommandQuit() {
 		System.out.println(this.program.toString());
@@ -56,6 +63,9 @@ public class Engine {
 	/**
 	 * Metodo que ejecuta las instrucciones que el usuario haya introducido por
 	 * consola
+	 * 
+	 * @return devuelve true si se ha podido ejecutar, de lo contrario, devuelve
+	 *         false
 	 */
 	public boolean CommandRun() {
 		System.out.println(this.program.runProgram(this.cpu));
@@ -65,21 +75,25 @@ public class Engine {
 
 	/**
 	 * Metodo por el que el usuario va introduciendo las instrucciones del programa
+	 * 
+	 * @return devuelve true si se ha podido ejecutar, de lo contrario, devuelve
+	 *         false
 	 */
 	public boolean CommandNewinst(Command co) {
-		if(co.getInstruction() != null) {
+		if (co.getInstruction() != null) {
 			this.program.setInstruction(co.getInstruction());
 			System.out.println(this.program.toString());
 			return true;
-		}else {
+		} else {
 			return false;
 		}
-		
-
 	}
 
 	/**
 	 * Metodo que vacia el programa
+	 * 
+	 * @return devuelve true si se ha podido ejecutar, de lo contrario, devuelve
+	 *         false
 	 */
 	public boolean CommandReset() {
 		this.program.reset();
@@ -88,24 +102,26 @@ public class Engine {
 
 	/**
 	 * Metodo que reemplaza una instruccion por otra que el usuario introduzca
+	 * 
+	 * @return devuelve true si se ha podido ejecutar, de lo contrario, devuelve
+	 *         false
 	 */
 	public boolean CommandReplace(Command co) {
-		if(co.getReplace() < this.program.programSize()) {
+		if (co.getReplace() < this.program.programSize()) {
 			System.out.println("Nueva instruccion: ");
 			String entrada = sc.nextLine();
 			ByteCode bc = ByteCodeParser.parse(entrada);
 			this.program.setInstructionPosition(bc, co.getReplace());
 			System.out.println(this.program.toString());
 			return true;
-		}else {
+		} else {
 			System.out.println(this.program.toString());
 			return false;
 		}
-
 	}
 
 	/**
-	 * Metodo que maneja todo el flujo del programa
+	 * Metodo que inicializa el programa
 	 */
 	public void start() {
 		while (!this.end) {
@@ -114,14 +130,13 @@ public class Engine {
 			if (co != null) {
 				System.out.println("Comienza la ejecucción de " + entrada.toUpperCase() + "\n");
 				if (co.execute(this)) {
-					
-				}else {
+
+				} else {
 					System.out.println(ANSI_RED + "Error: Ejecución incorrecta del comando" + ANSI_RESET);
 				}
 			} else {
 				System.out.println(ANSI_RED + "Error: Comando incorrecto" + ANSI_RESET);
 			}
-
 		}
 	}
 }

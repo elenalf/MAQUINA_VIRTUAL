@@ -27,7 +27,7 @@ public class CPU {
 	 * Metodo que se encarga de ejecutar la instruccion que le llega como parametro
 	 * modificando la memoria y/o la pila de operandos
 	 * 
-	 * @param instr es el bytecode que se va a ejecutar
+	 * @param instr es el ByteCode que se va a ejecutar
 	 * @return si la ejecucion genera un error retorna false
 	 */
 	public boolean execute(ByteCode instr) {
@@ -68,7 +68,7 @@ public class CPU {
 	}
 
 	/**
-	 * Metodo que resetea la memoria y la pila
+	 * Metodo que reinicia la memoria y la pila
 	 */
 	public void erase() {
 		this.memoria = new Memory();

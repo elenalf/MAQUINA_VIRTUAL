@@ -48,7 +48,6 @@ public class Memory {
 			}
 		}
 		return chain_M;
-
 	}
 
 	/**
@@ -66,10 +65,9 @@ public class Memory {
 			this.memory[pos] = value;
 			this.isEmpty = false;
 			return true;
-		}else {
+		} else {
 			return false;
 		}
-
 	}
 
 	/**
@@ -86,7 +84,6 @@ public class Memory {
 		} else {
 			return this.memory[pos];
 		}
-
 	}
 
 	/**
@@ -97,7 +94,7 @@ public class Memory {
 	 * @param pos Es la posicion a la que se quiere llegar en el array
 	 */
 	private void resize(int pos) {
-		
+
 		if (pos >= this.size) {
 			this.isEmpty = false;
 			Integer[] memory2 = new Integer[pos * 2];

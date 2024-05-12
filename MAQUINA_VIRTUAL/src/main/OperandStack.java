@@ -50,7 +50,6 @@ public class OperandStack {
 	 */
 	public boolean isEmpty() {
 		return this.num_elements == 0;
-
 	}
 
 	/**
@@ -74,8 +73,7 @@ public class OperandStack {
 	}
 
 	/**
-	 * Metodo que coge el ultimo elemento del array y lo elimina. El ultimo elemento
-	 * es num_element -1
+	 * Metodo que coge el ultimo elemento del array y lo elimina.
 	 * 
 	 * Complejidad = 0(1) ya que no variara en funcion del tamanio del dato
 	 * 

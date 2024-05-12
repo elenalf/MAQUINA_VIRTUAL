@@ -9,13 +9,13 @@ package main;
 public class ByteCodeParser {
 
 	/**
-	 * Metodo en el que se analiza un String que contiene un posible bytecode
+	 * Metodo en el que se analiza un String que contiene un posible ByteCode
 	 * 
 	 * Complejidad = 0(n) donde n es el tamanio de la cadena de tipo String
 	 * 
-	 * @param s es la cadena de texto que puede contener un bytecode
-	 * @return devuelve el bytecode que se encuentre en s o se devuelve null si no
-	 *         coincide con ningun bytecode
+	 * @param s es la cadena de texto que puede contener un ByteCode
+	 * @return devuelve el ByteCode que se encuentre en s o se devuelve null si no
+	 *         coincide con ningun ByteCode
 	 */
 	public static ByteCode parse(String s) {
 		String[] division = s.split(" ");
