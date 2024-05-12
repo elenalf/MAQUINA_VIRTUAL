@@ -19,7 +19,7 @@ Esta máquina virtual te permite hacer estas operaciones:
 
 <li>LOAD = lee de la memoria el valor que desee el usuario y lo almacena en la pila de operandos 📂</li>
 <h3>Ejemplo de funcionamiento</h3>
-<img src="" alt="Ejemplo de funcionamiento">
+<img src="media/load.png" alt="Ejemplo de funcionamiento">
 
 <li>STORE = escribe en la posicion de la memoria que desee el usuario el contenido de la cima de la pila de operandos y la elimina de ésta ✍️</li>
 <h3>Ejemplo de funcionamiento</h3>
