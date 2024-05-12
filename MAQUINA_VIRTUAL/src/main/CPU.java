@@ -20,7 +20,7 @@ public class CPU {
 	public CPU() {
 		this.pila = new OperandStack();
 		this.memoria = new Memory();
-		this.halt = true;
+		this.halt = false;
 	}
 
 	/**
@@ -31,27 +31,27 @@ public class CPU {
 	 * @return si la ejecucion genera un error retorna false
 	 */
 	public boolean execute(ByteCode instr) {
-		switch(instr.getInstruction()) {
-			case ADD:
-				return this.SumaPila();
-			case MUL:
-				return this.MultiplicaPila();
-			case DIV:
-				return this.DividePila();
-			case SUB:
-				return this.RestaPila();
-			case PUSH:
-				return this.Push(instr.getparam());
-			case LOAD:
-				return this.Load(this.memoria.read(instr.getparam()));
-			case STORE:
-				return this.Store(instr.getparam());
-			case OUT:
-				return this.Out();
-			case HALT:
-				return this.Halt();
-			default:
-				return false;
+		switch (instr.getInstruction()) {
+		case ADD:
+			return this.SumaPila();
+		case MUL:
+			return this.MultiplicaPila();
+		case DIV:
+			return this.DividePila();
+		case SUB:
+			return this.RestaPila();
+		case PUSH:
+			return this.Push(instr.getparam());
+		case LOAD:
+			return this.Load(this.memoria.read(instr.getparam()));
+		case STORE:
+			return this.Store(instr.getparam());
+		case OUT:
+			return this.Out();
+		case HALT:
+			return this.Halt();
+		default:
+			return false;
 		}
 	}
 
@@ -59,15 +59,11 @@ public class CPU {
 	 * Metodo que convierte el estado de la CPU en un String. Forma toda la linea de
 	 * codigo que tiene que imprimir
 	 * 
-	 * Complejidad: 0(n) donde n es la longitud del array memory
 	 * 
 	 * @return Retorna el estado de la CPU convertido en un String
 	 */
 	public String toString() {
-		String cadena_P = this.pila.toString();
-		String cadena_M = this.memoria.toString();
-		String chain = "Estado de la CPU: " + "\n" + cadena_P + "\n" + cadena_M;
-		return chain;
+		return "Estado de la CPU:" + "\n" + "  " + this.pila.toString() + "\n" + "  " + this.memoria.toString();
 
 	}
 
@@ -95,7 +91,7 @@ public class CPU {
 	 */
 	public void runCPU() {
 		this.halt = false;
-		
+
 	}
 
 	/**
@@ -105,6 +101,7 @@ public class CPU {
 	 *         devuelve false
 	 */
 	public boolean SumaPila() {
+		this.runCPU();
 		if (!this.pila.isEmpty()) {
 			int elemento1 = this.pila.pop();
 			int elemento2 = this.pila.pop();
@@ -128,6 +125,7 @@ public class CPU {
 	 *         devuelve false
 	 */
 	public boolean RestaPila() {
+		this.runCPU();
 		if (!this.pila.isEmpty()) {
 			int elemento1 = this.pila.pop();
 			int elemento2 = this.pila.pop();
@@ -150,6 +148,7 @@ public class CPU {
 	 *         devuelve false
 	 */
 	public boolean DividePila() {
+		this.runCPU();
 		if (!this.pila.isEmpty()) {
 			int elemento1 = this.pila.pop();
 			int elemento2 = this.pila.pop();
@@ -172,6 +171,7 @@ public class CPU {
 	 *         devuelve false
 	 */
 	public boolean MultiplicaPila() {
+		this.runCPU();
 		if (!this.pila.isEmpty()) {
 			int elemento1 = this.pila.pop();
 			int elemento2 = this.pila.pop();
@@ -195,6 +195,7 @@ public class CPU {
 	 *         devuelve false
 	 */
 	public boolean Push(int n) {
+		this.runCPU();
 		this.pila.push(n);
 		return true;
 	}
@@ -208,6 +209,7 @@ public class CPU {
 	 *         contrario, devuelve false
 	 */
 	public boolean Load(int pos) {
+		this.runCPU();
 		int elemento = this.memoria.read(pos);
 		if (elemento != -1) {
 			this.pila.push(elemento);
@@ -227,6 +229,7 @@ public class CPU {
 	 *         devuelve false
 	 */
 	public boolean Store(int pos) {
+		this.halt = false;
 		int elemento = this.pila.pop();
 		if (elemento == -1) {
 			return false;
@@ -243,6 +246,7 @@ public class CPU {
 	 *         false
 	 */
 	public boolean Out() {
+		this.runCPU();
 		if (!this.pila.isEmpty()) {
 			System.out.println("El elemento de la cima de la pila es: " + this.pila.getCima());
 			return true;

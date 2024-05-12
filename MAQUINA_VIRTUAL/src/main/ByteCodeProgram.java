@@ -40,7 +40,7 @@ public class ByteCodeProgram {
 		for (int i = 0; i < this.num_elements; i++) {
 			if (!cpu.isHalt() && cpu.execute(this.program[i])) {
 				mensaje += "El estado de la máquina tras la ejecición de: " + this.program[i].getInstruction() + " "
-						+ this.program[i].getparam() + " es: " + cpu.toString() + "\n";
+						+ this.program[i].getparam() + " es: " + "\n " + cpu.toString() + "\n";
 
 			} else if (!cpu.isHalt()) {
 				mensaje += ANSI_RED + "\n Eror: Ejecución incorrecta del comando";
