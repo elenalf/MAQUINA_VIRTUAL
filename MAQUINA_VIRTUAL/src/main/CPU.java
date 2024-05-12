@@ -43,7 +43,7 @@ public class CPU {
 		case PUSH:
 			return this.Push(instr.getparam());
 		case LOAD:
-			return this.Load(this.memoria.read(instr.getparam()));
+			return this.Load(instr.getparam());
 		case STORE:
 			return this.Store(instr.getparam());
 		case OUT:
