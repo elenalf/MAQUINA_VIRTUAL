@@ -79,7 +79,7 @@ public class Memory {
 	 * @return Retorna el valor que ha leido el metodo
 	 */
 	public Integer read(int pos) {
-		if (this.memory[pos] == null) {
+		if (this.memory[pos] == null && pos < 0) {
 			return -1;
 		} else {
 			return this.memory[pos];

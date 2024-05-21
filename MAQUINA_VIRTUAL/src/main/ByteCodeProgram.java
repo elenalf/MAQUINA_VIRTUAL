@@ -15,6 +15,7 @@ public class ByteCodeProgram {
 	private int size;
 	// pluggling para cambiar el color del texto
 	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_RESET = "\033[0m";
 
 	/**
 	 * Constructora
@@ -43,7 +44,7 @@ public class ByteCodeProgram {
 						+ this.program[i].getparam() + " es: " + "\n " + cpu.toString() + "\n";
 
 			} else if (!cpu.isHalt()) {
-				mensaje += ANSI_RED + "\n Eror: Ejecución incorrecta del comando";
+				mensaje += ANSI_RED + "\n Eror: Ejecución incorrecta del comando" + ANSI_RESET;
 
 			}
 		}
@@ -58,15 +59,15 @@ public class ByteCodeProgram {
 	 * 
 	 * Complejidad = 0(1) ya que no variara en funcion del tamanio del dato
 	 * 
-	 * @param bc es el ByteCode que se va a aniadir al programa
+	 * @param enum_BYTECODE es el ByteCode que se va a aniadir al programa
 	 */
-	public void setInstruction(ByteCode bc) {
+	public void setInstruction(ByteCode enum_BYTECODE) {
 		if (this.num_elements >= this.program.length) {
 			this.resize();
-			this.program[this.num_elements] = bc;
+			this.program[this.num_elements] = enum_BYTECODE;
 			this.num_elements++;
 		} else {
-			this.program[this.num_elements] = bc;
+			this.program[this.num_elements] = enum_BYTECODE;
 			this.num_elements++;
 		}
 	}

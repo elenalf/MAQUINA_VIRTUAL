@@ -33,23 +33,23 @@ public class CPU {
 	public boolean execute(ByteCode instr) {
 		switch (instr.getInstruction()) {
 		case ADD:
-			return this.SumaPila();
+			return SumaPila();
 		case MUL:
-			return this.MultiplicaPila();
+			return MultiplicaPila();
 		case DIV:
-			return this.DividePila();
+			return DividePila();
 		case SUB:
-			return this.RestaPila();
+			return RestaPila();
 		case PUSH:
-			return this.Push(instr.getparam());
+			return this.pila.push(instr.getparam());
 		case LOAD:
-			return this.Load(instr.getparam());
+			return Load(instr.getparam());
 		case STORE:
-			return this.Store(instr.getparam());
+			return Store(instr.getparam());
 		case OUT:
-			return this.Out();
+			return Out();
 		case HALT:
-			return this.Halt();
+			return Halt();
 		default:
 			return false;
 		}
@@ -104,14 +104,20 @@ public class CPU {
 		this.runCPU();
 		if (!this.pila.isEmpty()) {
 			int elemento1 = this.pila.pop();
-			int elemento2 = this.pila.pop();
-			if (elemento1 == -1 || elemento2 == -1) {
+			if(!this.pila.isEmpty()) {
+				int elemento2 = this.pila.pop();
+				if (elemento1 == -1 || elemento2 == -1) {
+					return false;
+				} else {
+					int resultado = elemento1 + elemento2;
+					this.pila.push(resultado);
+					return true;
+				}
+			}else {
+				this.pila.push(elemento1);
 				return false;
-			} else {
-				int resultado = elemento1 + elemento2;
-				this.pila.push(resultado);
-				return true;
 			}
+			
 		} else {
 			return false;
 		}
@@ -188,19 +194,6 @@ public class CPU {
 	}
 
 	/**
-	 * Metodo que aniade elementos a la pila
-	 * 
-	 * @param n es el elemento que se desea aniadir
-	 * @return devuleve true si se ha podido aniadir el elemento, de lo contrario,
-	 *         devuelve false
-	 */
-	public boolean Push(int n) {
-		this.runCPU();
-		this.pila.push(n);
-		return true;
-	}
-
-	/**
 	 * Metodo que lee de la memoria el valor que el usuario indique su posicion y lo
 	 * aniade a la pila de operandos
 	 * 
@@ -229,13 +222,17 @@ public class CPU {
 	 *         devuelve false
 	 */
 	public boolean Store(int pos) {
-		this.halt = false;
-		int elemento = this.pila.pop();
-		if (elemento == -1) {
+		if(pos > 0) {
+			this.halt = false;
+			int elemento = this.pila.pop();
+			if (elemento == -1) {
+				return false;
+			} else {
+				this.memoria.write(pos, elemento);
+				return true;
+			}
+		}else {
 			return false;
-		} else {
-			this.memoria.write(pos, elemento);
-			return true;
 		}
 	}
 
@@ -262,10 +259,7 @@ public class CPU {
 	 *         devuelve false
 	 */
 	public boolean Halt() {
-		if (!this.halt) {
-			return true;
-		} else {
-			return false;
-		}
+		this.halt = true;
+		return true;
 	}
 }

@@ -79,9 +79,9 @@ public class Engine {
 	 * @return devuelve true si se ha podido ejecutar, de lo contrario, devuelve
 	 *         false
 	 */
-	public boolean CommandNewinst(Command co) {
-		if (co.getInstruction() != null) {
-			this.program.setInstruction(co.getInstruction());
+	public boolean CommandNewinst(ByteCode bc) {
+		if (bc.getInstruction() != null) {
+			this.program.setInstruction(bc);
 			System.out.println(this.program.toString());
 			return true;
 		} else {
@@ -106,15 +106,16 @@ public class Engine {
 	 * @return devuelve true si se ha podido ejecutar, de lo contrario, devuelve
 	 *         false
 	 */
-	public boolean CommandReplace(Command co) {
-		if (co.getReplace() < this.program.programSize()) {
+	public boolean CommandReplace(int param) {
+		if (param < this.program.programSize()) {
 			System.out.println("Nueva instruccion: ");
 			String entrada = sc.nextLine();
 			ByteCode bc = ByteCodeParser.parse(entrada);
-			this.program.setInstructionPosition(bc, co.getReplace());
+			this.program.setInstructionPosition(bc, param);
 			System.out.println(this.program.toString());
 			return true;
 		} else {
+			System.out.println(ANSI_RED + "No se ha podido ejecutar el comando Replace" + ANSI_RESET);
 			System.out.println(this.program.toString());
 			return false;
 		}

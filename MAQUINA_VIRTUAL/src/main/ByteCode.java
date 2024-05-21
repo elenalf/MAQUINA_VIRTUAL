@@ -40,7 +40,7 @@ public class ByteCode {
 	 * @return devuelve el ByteCode transformado a String
 	 */
 	public String toString() {
-		String chain = this.name.toString().toUpperCase() + this.param;
+		String chain = this.name.toString().toUpperCase() + " " + this.param;
 		return chain;
 	}
 
