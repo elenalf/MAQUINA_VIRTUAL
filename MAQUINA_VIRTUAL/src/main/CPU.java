@@ -104,7 +104,7 @@ public class CPU {
 		this.runCPU();
 		if (!this.pila.isEmpty()) {
 			int elemento1 = this.pila.pop();
-			if(!this.pila.isEmpty()) {
+			if (!this.pila.isEmpty()) {
 				int elemento2 = this.pila.pop();
 				if (elemento1 == -1 || elemento2 == -1) {
 					return false;
@@ -113,11 +113,11 @@ public class CPU {
 					this.pila.push(resultado);
 					return true;
 				}
-			}else {
+			} else {
 				this.pila.push(elemento1);
 				return false;
 			}
-			
+
 		} else {
 			return false;
 		}
@@ -134,14 +134,20 @@ public class CPU {
 		this.runCPU();
 		if (!this.pila.isEmpty()) {
 			int elemento1 = this.pila.pop();
-			int elemento2 = this.pila.pop();
-			if (elemento1 == -1 || elemento2 == -1) {
-				return false;
+			if (!this.pila.isEmpty()) {
+				int elemento2 = this.pila.pop();
+				if (elemento1 == -1 || elemento2 == -1) {
+					return false;
+				} else {
+					int resultado = elemento1 - elemento2;
+					this.pila.push(resultado);
+					return true;
+				}
 			} else {
-				int resultado = elemento1 - elemento2;
-				this.pila.push(resultado);
-				return true;
+				this.pila.push(elemento1);
+				return false;
 			}
+
 		} else {
 			return false;
 		}
@@ -157,14 +163,20 @@ public class CPU {
 		this.runCPU();
 		if (!this.pila.isEmpty()) {
 			int elemento1 = this.pila.pop();
-			int elemento2 = this.pila.pop();
-			if (elemento1 == -1 || elemento2 == -1) {
-				return false;
+			if (!this.pila.isEmpty()) {
+				int elemento2 = this.pila.pop();
+				if (elemento1 == -1 || elemento2 == -1) {
+					return false;
+				} else {
+					int resultado = elemento1 / elemento2;
+					this.pila.push(resultado);
+					return true;
+				}
 			} else {
-				int resultado = elemento1 / elemento2;
-				this.pila.push(resultado);
+				this.pila.push(elemento1);
 				return true;
 			}
+
 		} else {
 			return false;
 		}
@@ -180,14 +192,20 @@ public class CPU {
 		this.runCPU();
 		if (!this.pila.isEmpty()) {
 			int elemento1 = this.pila.pop();
-			int elemento2 = this.pila.pop();
-			if (elemento1 == -1 || elemento2 == -1) {
-				return false;
-			} else {
-				int resultado = elemento1 * elemento2;
-				this.pila.push(resultado);
+			if(!this.pila.isEmpty()) {
+				int elemento2 = this.pila.pop();
+				if (elemento1 == -1 || elemento2 == -1) {
+					return false;
+				} else {
+					int resultado = elemento1 * elemento2;
+					this.pila.push(resultado);
+					return true;
+				}
+			}else {
+				this.pila.push(elemento1);
 				return true;
 			}
+			
 		} else {
 			return false;
 		}
@@ -222,7 +240,7 @@ public class CPU {
 	 *         devuelve false
 	 */
 	public boolean Store(int pos) {
-		if(pos > 0) {
+		if (pos > 0) {
 			this.halt = false;
 			int elemento = this.pila.pop();
 			if (elemento == -1) {
@@ -231,7 +249,7 @@ public class CPU {
 				this.memoria.write(pos, elemento);
 				return true;
 			}
-		}else {
+		} else {
 			return false;
 		}
 	}

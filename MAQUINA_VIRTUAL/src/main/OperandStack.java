@@ -86,7 +86,6 @@ public class OperandStack {
 		} else {
 			int ultimo = this.stack[this.num_elements - 1];
 			this.num_elements--;
-
 			return ultimo;
 		}
 	}

@@ -107,18 +107,25 @@ public class Engine {
 	 *         false
 	 */
 	public boolean CommandReplace(int param) {
-		if (param < this.program.programSize()) {
-			System.out.println("Nueva instruccion: ");
-			String entrada = sc.nextLine();
-			ByteCode bc = ByteCodeParser.parse(entrada);
-			this.program.setInstructionPosition(bc, param);
-			System.out.println(this.program.toString());
-			return true;
-		} else {
+		if(param > 0) {
+			if (param < this.program.programSize()) {
+				System.out.println("Nueva instruccion: ");
+				String entrada = sc.nextLine();
+				ByteCode bc = ByteCodeParser.parse(entrada);
+				this.program.setInstructionPosition(bc, param);
+				System.out.println(this.program.toString());
+				return true;
+			} else {
+				System.out.println(ANSI_RED + "No se ha podido ejecutar el comando Replace" + ANSI_RESET);
+				System.out.println(this.program.toString());
+				return false;
+			}
+		}else {
 			System.out.println(ANSI_RED + "No se ha podido ejecutar el comando Replace" + ANSI_RESET);
 			System.out.println(this.program.toString());
 			return false;
 		}
+		
 	}
 
 	/**
